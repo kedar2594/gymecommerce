@@ -1,0 +1,91 @@
+<!-- <mat-card class="example-card" *ngIf="product" style="max-height:555px">
+  <a class="p-link" [routerLink]="['/products/viewproducts', product?.productId]">
+    <img style="max-width: 626px;max-height: 800px;" mat-card-image src="{{product.productImgIds[0].fileName}}"
+      alt="Photo">
+  </a>
+  <div class="wishlist-icon {{index}}-wishlist">
+    <a (click)="productAddToWishlist(product, index+'-wishlist')"><i class="material-icons"> favorite </i></a>
+  </div>
+  <mat-card-content class="product-content relative">
+    <h6><a [routerLink]="['/products/viewproducts', product?.productId]" class="title-link">{{product.productName}}</a>
+    </h6>
+    <div>
+      <div fxFlex fxLayoutAlign="space-between">
+        <h6 class="accent-color">₹{{product.sellingPrice}}</h6>
+        <div class="rating-star">
+          <embryo-Rating [rate]="product.rating"></embryo-Rating>
+        </div>
+      </div>
+    </div>
+    <div class="m-icon" *ngIf="checkCartAlready(product)">
+      <embryo-AddToCardButton [product]="product" (addToCart)="addToCartProduct($event)"></embryo-AddToCardButton>
+    </div>
+    <div class="m-icon" *ngIf="!checkCartAlready(product)">
+      <button mat-fab [routerLink]="['/products/viewproducts',product?.productId]"
+        style="background: linear-gradient(to right, #ed1c24 0%, #ff9933 100%);"><i class="material-icons">
+          remove_red_eye </i></button>
+    </div>
+  </mat-card-content>
+</mat-card> -->
+<!-- <mat-card class="example-card" *ngIf="product" style="max-height:325px">
+  <a class="p-link" [routerLink]="['/products/viewproducts',product?.productId]">
+    <img style="max-width: 626px;max-height: 800px;" mat-card-image src="{{product.productPic}}" alt="Photo">
+  </a>
+  <div class="wishlist-icon {{index}}-wishlist">
+    <a (click)="productAddToWishlist(product, index+'-wishlist')"><i class="material-icons"> favorite </i></a>
+  </div>
+  <mat-card-content class="product-content relative">
+    <h6><a [routerLink]="['/products/viewproducts',product?.productId]" class="title-link">{{product.productName}}</a>
+    </h6>
+    <div>
+      <div fxFlex fxLayoutAlign="space-between">
+        <h6 class="accent-color" style="filter: brightness(1.0);
+        color: #e0272fc4;">₹{{product.sellingPrice}} <del style="color: #878787;font-size: 16px;">₹
+            {{product.mrp}}</del></h6>
+        <div class="rating-star">
+          <embryo-Rating [rate]="product.rating"></embryo-Rating>
+        </div>
+      </div>
+    </div>
+    <div class="m-icon" *ngIf="checkCartAlready(product)">
+
+      <embryo-AddToCardButton [product]="product" (addToCart)="addToCartProduct($event)"></embryo-AddToCardButton>
+    </div>
+    <div class="m-icon" *ngIf="!checkCartAlready(product)">
+      <button mat-fab [routerLink]="['/products/viewproducts',product?.productId]" style="background-color: #003367;"><i
+          class="material-icons"> remove_red_eye </i></button>
+    </div>
+  </mat-card-content>
+  <mat-chip color="accent" style="background-color: #ed1c249e;" selected>{{product?.discount}}%</mat-chip>
+</mat-card> -->
+<!-- /////june 18////////// -->
+<mat-card class="box-shadow-md p-4" style="max-height:370px;background: #9d9d9d21;">
+  <a href="javascript:void(0)" [routerLink]="['/products/viewproduct',product?.productId]">
+    <img [src]="product.productPic" alt="Photo" style="max-height:210px;">
+  </a>
+  <mat-card-content class="pt-3">
+    <!-- <p class="text-muted mb-0"> <a href="javascript:void(0)">{{product?.category}}</a></p> -->
+    <h6><a href="javascript:void(0)" [routerLink]="['/products/viewproduct',product?.productId]">
+        {{product?.productName}}</a></h6>
+    <div fxLayoutAlign="space-between">
+      <h6 class="accent-color" style="filter: brightness(1.0);
+      color: #e0272fc4;">₹{{product?.sellingPrice}} <del style="color: #878787;font-size: 16px;">₹
+          {{product.mrp}}</del></h6>
+    </div>
+    <button mat-raised-button class="button-grey" *ngIf="product.status == 0" (click)="addToCartProduct(product)" style="color: white;
+      background-color: #003367;">Add TO Cart</button>
+    <button *ngIf="product.status == 1" mat-raised-button class="button-grey" [routerLink]="['/cart']"
+      style="background-color: #000;color:white">View Cart</button>
+    <!-- <div class="m-icon" *ngIf="checkCartAlready(product)">
+
+        <embryo-AddToCardButton [product]="product" (addToCart)="addToCartProduct($event)"></embryo-AddToCardButton>
+      </div>
+      <div class="m-icon" *ngIf="!checkCartAlready(product)">
+        <button mat-fab [routerLink]="['/products/viewproducts',product?.productId]" style="background-color: #003367;"><i
+            class="material-icons"> remove_red_eye </i></button>
+      </div> -->
+  </mat-card-content>
+  <div class="offer-badge">
+    <mat-chip color="accent" style="background-color: #ed1c24;" selected>{{product?.discount}}%</mat-chip>
+  </div>
+</mat-card>

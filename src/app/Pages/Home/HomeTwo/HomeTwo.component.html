@@ -1,0 +1,96 @@
+<embryo-HomePageTwoSlider></embryo-HomePageTwoSlider>
+<embryo-HeaderUserProfileDropdown style="visibility: hidden;" [alluserdetail]="userdetails">
+</embryo-HeaderUserProfileDropdown>
+
+<embryo-CtaGroup></embryo-CtaGroup>
+
+<!-- <embryo-CtaGroup></embryo-CtaGroup> -->
+<div class="shop-card-wrapper section-gap" style="margin-top: -40px;">
+
+  <div class="container" *ngIf="showDod" style="padding-left: 0px !important;padding-right:0px !important;width:1250px">
+    <mat-toolbar color="primary" style="height:150px; background: linear-gradient(to bottom, #003366 0%, #33cccc 100%);"
+      class="section-title-toolbar">
+      <mat-toolbar-row>
+        <div fxLayoutAlign="space-between" class="w-100 toolbar-title" style="color:#fff">
+          <div>
+            <h3 style="color:#fff;font-size: x-large;">Deals Of the Day</h3>
+          </div>
+          <span class="text-sm text-uppercase">
+            <div class="counter-wrapper">
+              <div class="counter-item">
+                <span class="counter-digit" style="font-size: large;">{{days}}</span>
+                <span class="counter-text" style="font-size:larger;">Days</span>
+              </div>
+              <div class="counter-item">
+                <span class="counter-digit" style="font-size: large;">{{hours}}</span>
+                <span class="counter-text" style="font-size:larger;">Hours</span>
+              </div>
+              <div class="counter-item">
+                <span class="counter-digit" style="font-size: large;">{{minutes}}</span>
+                <span class="counter-text" style="font-size:larger;">Minutes</span>
+              </div>
+              <div class="counter-item">
+                <span class="counter-digit" style="font-size: large;">{{seconds}}</span>
+                <span class="counter-text" style="font-size:larger;">Seconds</span>
+              </div>
+            </div>
+
+          </span>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+
+  <div class="shop-card-gap" *ngIf="productsSliderData" style="margin-top:-82px;">
+    <div class="container" style="padding-left: 0px !important;padding-right:0px !important;width:1230px">
+      <ng-container>
+        <ngx-slick-carousel *ngIf="!embryoService.isDirectionRtl" class="carousel" [config]="slideConfig">
+          <div ngxSlickItem *ngFor="let product of productsSliderData; let i=index">
+            <embryo-ProductCard [product]="product" (addToCart)="addToCart($event)" [currency]="embryoService.currency"
+              (addToWishlist)="addToWishlist($event)" [index]="i">
+            </embryo-ProductCard>
+          </div>
+        </ngx-slick-carousel>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<div class="quick-shop" *ngIf="advertismlist0">
+  <embryo-Sales [advitiseZero]="advertismlist0"></embryo-Sales>
+</div>
+
+<div class="quick-shop" *ngIf="advertismlist1">
+  <embryo-Sales1 [advitiseOne]="advertismlist1"></embryo-Sales1>
+</div>
+
+<!-- <embryo-LighteningDeals *ngIf="lighteningDealsProducts" [lighteningDeals]="lighteningDealsProducts"></embryo-LighteningDeals> -->
+
+<embryo-TopProducts *ngIf="topProductslist" [products]="topProductslist" [currency]="embryoService?.currency"
+  (addToCart)="addToCart($event)"></embryo-TopProducts>
+
+
+
+<div class="feature-section">
+  <div class="container" style="padding-left:0px;padding-right:0px;width:1230px;">
+    <embryo-Features></embryo-Features>
+  </div>
+</div>
+<div class="section-gap pt-0">
+  <div class="container">
+    <div fxLayoutAlign="space-between" class="w-100">
+      <div class="block-title mb-4">
+        <h3>Our Clients</h3>
+      </div>
+    </div>
+    <embryo-BrandsLogo [isRTL]="embryoService.isDirectionRtl"></embryo-BrandsLogo>
+  </div>
+</div>
+<div class="section-gap pb-0">
+  <embryo-SubscribeTwo></embryo-SubscribeTwo>
+</div>
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+  <button class="backToTop" (click)="scrollToTop()">
+    <i class="fa fa-chevron-up" style="color: white; font-size: 20px;"></i>
+  </button>
+</div>

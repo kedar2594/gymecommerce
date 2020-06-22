@@ -1,0 +1,44 @@
+<div class="section-gap" *ngIf="randomSortProducts && randomSortProducts.length > 0">
+  <div class="container" style="margin-top: -45px;padding-left: 0px;padding-right: 0px;width:1230px">
+    <div fxLayoutAlign="space-between" class="w-100 ">
+      <div class="block-title">
+        <h3 style="text-transform: uppercase;font-family: Barlow Condensed,Sans-serif;font-size:36px;font-weight: 700;">
+          Top Products</h3>
+      </div>
+      <!-- <a [routerLink]="['/products']" style="font-size: large;">View All</a> -->
+      <!-- <button color="accent" mat-raised-button [routerLink]="['/products']"
+        style="background-color:#ed1c24;height: 35px;">View All</button> -->
+    </div>
+    <div fxLayout="row wrap" class="col-gap">
+      <ng-container *ngFor="let product of randomSortProducts; let i=index">
+        <div *ngIf="i < gridLength" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="20">
+          <mat-card class="box-shadow-md p-4" style="height:340px;background: #9d9d9d21;">
+            <a href="javascript:void(0)" [routerLink]="['/products/viewproduct',product?.productId]">
+              <img [src]="product.productPic" alt="Photo" style="max-height:183px;">
+            </a>
+            <mat-card-content class="pt-3">
+              <!-- <p class="text-muted mb-0"> <a href="javascript:void(0)">{{product?.category}}</a></p> -->
+              <h6><a href="javascript:void(0)" [routerLink]="['/products/viewproduct',product?.productId]">
+                  {{product?.productName}}</a></h6>
+              <div fxLayoutAlign="space-between">
+                <h6 class="accent-color" style="filter: brightness(1.0);
+                color: #e0272fc4;">₹{{product?.sellingPrice}} <del style="color: #878787;font-size: 16px;">₹
+                    {{product.mrp}}</del></h6>
+              </div>
+              <button mat-raised-button class="button-grey" *ngIf="product.status == 0"
+                (click)="addToCartProduct(product)" style="color: white;
+                background-color: #003367;">Add TO Cart</button>
+              <button *ngIf="product.status == 1" mat-raised-button class="button-grey" [routerLink]="['/cart']"
+                style="background-color: #000;color:white">View Cart</button>
+            </mat-card-content>
+            <div class="offer-badge">
+              <mat-chip color="accent" style="background-color: #ed1c24;" selected>{{product?.discount}}%</mat-chip>
+            </div>
+          </mat-card>
+        </div>
+      </ng-container>
+    </div>
+    <a *ngIf="(gridLength < 12)" class="btn btn-block transparent-btn" (click)="extendGridStructure(true)">Show All</a>
+    <a *ngIf="(gridLength != 4)" class="btn btn-block transparent-btn" (click)="extendGridStructure(false)">Less</a>
+  </div>
+</div>

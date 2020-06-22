@@ -1,0 +1,13 @@
+
+::ng-deep snack-bar-container.custom-class1 {
+  background: #ed1c24;
+
+}
+
+::ng-deep .custom-class1 .mat-simple-snackbar {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+::ng-deep .custom-class1 .mat-simple-snackbar-action { color: white; }

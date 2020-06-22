@@ -1,0 +1,23 @@
+<mat-card class="home-card">
+  <mat-card-content class="home-card-content">
+
+    <div style="text-align: center;">
+      <div>
+        <h1 style="font-family: serif;">{{advitiseOne.adName}}</h1>
+      </div>
+
+      <div>
+        <h4 style="font-family: serif;">{{advitiseOne.adDescription}}</h4>
+      </div>
+
+      <div><button mat-raised-button (click)="navigateToProducts()" style="background-color: #ed1c24;color:white">SHOP
+          NOW</button></div>
+      <div style="margin-top:10px;">
+        <h6>1-Year Membership Included</h6>
+      </div>
+      <!-- <div>1-Year Membership Included</div> -->
+    </div>
+
+    <img mat-card-image src={{advitiseOne.adImagePic}} style="height:500px" alt="Photo">
+  </mat-card-content>
+</mat-card>

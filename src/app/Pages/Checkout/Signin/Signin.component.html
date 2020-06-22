@@ -1,0 +1,124 @@
+<!-- <embryo-PageTitle heading="Checkout"></embryo-PageTitle> -->
+<embryo-HeaderCart style="visibility: hidden;"></embryo-HeaderCart>
+<div>
+  <div class="checkout-option">
+    <div class="container">
+
+      <div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap">
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="40" fxFlex.lg="40" fxFlex.xl="40">
+
+          <mat-card style="box-shadow: 2px 4px 10px red; text-align: center;">
+            <h4>Proceed to payment</h4>
+            <form class="example-form" [formGroup]="userAddressValidations">
+              <mat-form-field appearance="outline" class="col-sm-6">
+                <mat-label>10-digit Mobile Number</mat-label>
+                <input matInput formControlName="mobileNumber" maxlength="10" (keypress)=_keyPress($event)
+                  autocomplete="off">
+                <mat-error *ngIf="userAddressValidations.get('mobileNumber').hasError('required')">
+                  Please fill out this field.
+                </mat-error>
+                <mat-error *ngIf="userAddressValidations.get('mobileNumber').hasError('pattern')">
+                  It is not a valid mobile number.
+                </mat-error>
+              </mat-form-field>
+
+            </form>
+            <button style="background-color: #003367;color: white;" class="button-lg mb-3" mat-raised-button
+              (click)="requestOtp()">Request OTP
+            </button>
+
+            <otp *ngIf="otpstatus" [setting]="settings" (onValueChange)="onInputChange($event)"></otp>
+            <button *ngIf="otpcontinue" style="margin-top: 15px;background-color: #003367;color: white;"
+              class="button-lg mb-3" mat-raised-button (click)="continuePayment()">Continue Payment
+            </button>
+            <mat-error *ngIf="otpvalidation">
+              Please enter a valid OTP.
+            </mat-error>
+          </mat-card>
+
+        </div>
+        <!-- <h4 style="text-align: center;"> Order Details </h4> -->
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+          <mat-card style="box-shadow: 0 0 30px 0 rgba(0,0,0,.1);">
+            <div>
+              <h5 style="text-align: center;"> Your Order Details </h5>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="border-bottom: white;">Product Name</th>
+                    <!-- <th>Quantity</th> -->
+                    <th style="border-bottom: white;">Discount</th>
+                    <th style="border-bottom: white;" class="text-right">Price</th>
+
+                    <!-- <th>Discount Percentage</th> -->
+                    <!-- <th>Selling Price</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of orderDetails.orderDetails">
+                    <td style="font-size: 14px; color: #878787;">
+                      {{item.prodductDetails.productName}}
+                      <p><b>Qty: {{item.quantity}}</b></p>
+                    </td>
+                    <!-- <td style="color: black;"> {{item.quantity}} </td> -->
+                    <td *ngIf="item.prodductDetails.specialDiscountPercentage > 0">
+                      ₹ {{item.prodductDetails.specialDiscount}}(~{{item.prodductDetails.specialDiscountPercentage}}%)
+                    </td>
+                    <td *ngIf="item.prodductDetails.specialDiscountPercentage == null"> - </td>
+                    <td class="text-right"> ₹ {{item.amountOverAll}}</td>
+
+                    <!-- <td>{{item.discountPercentage}}%</td> -->
+                    <!-- <td><del>{{item.amountInduvisual}}</del></td> -->
+
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td colspan="1" style="border-top:0px solid #fff;">Sub Total : </td>
+                    <td colspan="3" class="text-right" style="font-size: 18px; border-top:0px solid #fff;"> ₹
+                      {{orderDetails.totalAmount}} </td>
+                  </tr>
+                  <tr>
+                    <td colspan="1" style="border-top:0px solid #fff;">Tax(GST) :</td>
+                    <td colspan="3" class="text-right" style="font-size: 14px; border-top:0px solid #fff;"> ₹
+                      {{orderDetails.taxAmount}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="1" style="font-size: 20px;">Grand Total :</td>
+                    <td colspan="3" class="text-right" style="font-size: 20px;">₹
+                      {{totalamount}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- <p style="text-align: left; font-size: 16px;">  </span> <br>
+            <span style="text-align: left;">Tax Amount : </span> <span> ₹ {{orderDetails.taxAmount}} (18%) </span> <br>
+            <span style="text-align: left; font-size: 20px;">Grand Total :
+            </span> <span>₹
+              {{orderDetails.totalAmount + orderDetails.taxAmount }} </span> -->
+          </mat-card>
+        </div>
+        <!-- <div class="view-cart text-right mb-5">
+          <button mat-raised-button color="accent" (click)="openDialog()">Show Order Detail :
+            {{orderDetails.totalAmount}}</button>
+
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <ng-template #elseBlock>
+  <div class="section-gap-lg text-center">
+    <div class="mb-4">
+      <img src="assets/images/empty-cart.png" height="128" width="128" alt="cart-empty">
+    </div>
+    <h4> Your Shopping Bag is empty.</h4>
+    <a href="javascript:void(0)" class="primary-color" [routerLink]="['/']">Go for Shopping</a>
+  </div>
+</ng-template> -->
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+  <button class="backToTop" (click)="scrollToTop()">
+    <i class="fa fa-chevron-up" style="color: white; font-size: 20px;"></i>
+  </button>
+</div>

@@ -1,0 +1,15 @@
+<embryo-PageTitle heading="About Us" subHeading="Creative team and wide goals."></embryo-PageTitle>
+<div class="inner-container">
+  <div class="about-page">
+
+    <div class="about-info bg-white section-gap">
+
+      <embryo-AboutInfo [data]="aboutInfo"></embryo-AboutInfo>
+    </div>
+
+  </div>
+  <div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+    <button class="backToTop" (click)="scrollToTop()">
+      <i class="fa fa-chevron-up" style="color: white; font-size: 20px;"></i>
+    </button>
+  </div>

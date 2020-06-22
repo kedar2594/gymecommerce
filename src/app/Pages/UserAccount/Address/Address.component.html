@@ -1,0 +1,38 @@
+<mat-card>
+  <!-- <h4>Address Infomation</h4> -->
+  <div fxLayoutAlign="space-between">
+    <h4>Address Infomation</h4> <button mat-raised-button color="accent" [routerLink]="['/account/profile/edit']"
+      [queryParams]="{type:'add-address'}">Add Address</button>
+  </div>
+  <div fxLayout="row wrap" class="col-gap">
+    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="40" fxFlex.lg="40" fxFlex.xl="40">
+      <h5>Billing Address</h5>
+      <div class="pt-3">
+        <p class="mb-4"
+          *ngIf="userdetails.primaryAddress == '' || userdetails.primaryAddress == ',,,,,' || userdetails.primaryAddress == undefined ">
+          No Billing address
+        </p>
+        <address class="mb-4" *ngFor="let billingAddress of userdetails.primaryAddress?.split(',')">
+          {{billingAddress}}
+        </address>
+        <button mat-raised-button color="accent" [routerLink]="['/account/profile/edit']"
+          [queryParams]="{type:'address'}">Edit</button>
+      </div>
+    </div>
+    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="40" fxFlex.lg="40" fxFlex.xl="40">
+      <h5>Shipping Address</h5>
+      <div class="pt-3">
+        <p class="mb-4"
+          *ngIf="userdetails.shippingAddress == '' || userdetails.shippingAddress == ',,,,,' ||  userdetails.primaryAddress == undefined ">
+          No Shipping address
+        </p>
+        <address class="mb-4" *ngFor="let shippingAddress of userdetails.shippingAddress?.split(',')">
+          {{shippingAddress}}
+        </address>
+
+        <button mat-raised-button color="accent" [routerLink]="['/account/profile/edit']"
+          [queryParams]="{type:'ship-address'}">Edit</button>
+      </div>
+    </div>
+  </div>
+</mat-card>

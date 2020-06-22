@@ -1,0 +1,107 @@
+<embryo-PageTitle heading="Payment Confirmation"></embryo-PageTitle>
+
+<div class="inner-container">
+  <div class="bg-white final-receipt-page section-gap">
+    <div class="final-receipt">
+      <div class="container">
+        <div fxLayout="row wrap" fxLayoutAlign="center center" class="col-gap">
+          <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="60" fxFlex.lg="60" fxFlex.xl="60">
+            <mat-card class="pt-0">
+              <div id="payment-receipt">
+                <div class="text-center bg-grey p-5 mat-card-pad-none">
+                  <h1>Thank You</h1>
+                  <h5 class="mb-4">Payment is successfully processsed and your order is on the way </h5>
+                  <h6 class="mb-4">Transaction ID: {{orderDetailslist.orderNumber}}</h6>
+                  <img src="assets/images/checked.png" width="64" height="64" alt="Success">
+                </div>
+                <div class="py-5">
+                  <div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap">
+                    <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+                      <h6>Summery</h6>
+                      <!-- <p class="mb-1">Order ID: 2563883628932</p> -->
+                      <p class="mb-1">Order Date: {{todayDate | date:'MMMM d, y'}} </p>
+                      <p class="mb-1">Order Total:
+                        ₹{{orderDetailslist.finalAmount}}</p>
+                    </div>
+                    <div class="pb-4" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+                      <h6>Ship To</h6>
+
+                      <p class="mb-1 text-capitalize">{{details.customerFullName}}</p>
+                      <p class="mb-1 text-capitalize">{{details.shippingAddress}}</p>
+                      <!-- <p class="mb-1 text-capitalize">{{userDetails?.user_details?.city_state}}</p>
+                    <p class="mb-1 text-capitalize">{{userDetails?.user_details?.country}} - {{userDetails?.user_details?.zip_code}}</p> -->
+                      <p class="mb-1">Contact No. {{details.phoneNumber}}</p>
+
+                    </div>
+                  </div>
+                  <div class="py-4 text-center bg-grey">
+                    <h4>Expected Date of Delivery</h4>
+                    <h3>{{deliveryDate | date:'MMMM d, y'}}</h3>
+                  </div>
+                  <h4 class="pt-5">Your Ordered Details</h4>
+                  <div fxLayout="row wrap" fxLayoutAlign="start center" class="col-gap"
+                    *ngFor="let product of orderDetails">
+                    <div fxFlex.xs="20" fxFlex.sm="25" fxFlex.md="25" fxFlex.lg="25" fxFlex.xl="25">
+                      <img width="100" [src]="product.prodductDetails.productPic" alt="cart Image">
+                    </div>
+                    <div fxFlex.xs="30" fxFlex.sm="25" fxFlex.md="25" fxFlex.lg="25" fxFlex.xl="25">
+                      <h6>Product Name</h6>
+                      <p class="font-bold">{{product.prodductDetails.productName}}</p>
+                    </div>
+                    <div fxFlex.xs="25" fxFlex.sm="25" fxFlex.md="25" fxFlex.lg="25" fxFlex.xl="25">
+                      <h6>Quantity</h6>
+                      <p style="margin-left: 20px;">{{product.quantity}}</p>
+
+                    </div>
+                    <div fxFlex.xs="25" fxFlex.sm="25" fxFlex.md="25" fxFlex.lg="25" fxFlex.xl="25">
+                      <h6>Price</h6>
+                      <p>₹{{product.amountOverAll}}</p>
+                    </div>
+                  </div>
+                  <hr class="dark-border spacer">
+                  <div class="text-right ">
+                    <div>
+                      <p>Subtotal</p><span fxFlex></span> ₹{{orderDetailslist.totalAmount}}
+                    </div>
+                    <div>
+                      <p>Shipping</p><span fxFlex></span> ₹0
+                    </div>
+                    <div>
+                      <p>Tax(GST)</p><span fxFlex></span> ₹{{orderDetailslist.taxAmount}}
+                    </div>
+                    <hr class="spacer">
+                    <div class="mb-4">
+                      <h4>Total</h4><span fxFlex></span>
+                      <h4> ₹{{orderDetailslist.finalAmount}}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="btn-group">
+
+                <button mat-raised-button color="accent" class="button-lg" type="button" (click)="printDiv()"
+                  style="background-color: #ed1c24;">Download PDF</button>
+                <button mat-raised-button color="accent" class="button-lg" [routerLink]="['/']"
+                  style="background-color: #ed1c24;">Go to Home</button>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+  <button class="backToTop" (click)="scrollToTop()">
+    <i class="fa fa-chevron-up" style="color: white; font-size: 20px;"></i>
+  </button>
+</div>
+<!-- <ng-template #elseBlock>
+  <div class="section-gap-lg text-center">
+    <div class="mb-4">
+    <img src="assets/images/empty-cart.png" height="128" width="128" alt="cart-empty">
+  </div>
+    <h4> Your Shopping Bag is empty.</h4>
+    <a href="javascript:void(0)" class="primary-color" (click)="goToHome()">Go for Shopping</a>
+  </div>
+</ng-template> -->

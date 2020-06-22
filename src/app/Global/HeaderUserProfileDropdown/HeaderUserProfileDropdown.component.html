@@ -1,0 +1,19 @@
+<button id="profile" mat-mini-fab class="log-in-user" [matMenuTriggerFor]="loginuser">
+  <!-- <img src="assets/images/log-in-user.jpg" width="250" height="250" alt="log-in-user"> -->
+  <i class="fa fa-user" aria-hidden="true" style="    color: #ed1c24;"></i>
+</button>
+<button id="login" mat-raised-button class="log-in-user" [routerLink]="['/session/signin']"
+  style="background-color: #ed1c24;color:white;line-height: 29px;">Login</button>
+<!-- <div  class="triangle-up"></div> -->
+<mat-menu #loginuser="matMenu">
+
+  <button mat-menu-item fxLayoutAlign="start center" [routerLink]="['/account/profile']"><i
+      class="material-icons mr-1">account_circle</i> <span>Profile</span>
+  </button>
+  <button mat-menu-item [routerLink]="['/account/profile']"><i
+      class="material-icons mr-1">settings</i><span>Account</span></button>
+  <button mat-menu-item [routerLink]="['/account/profile']"> <i class="material-icons mr-1">local_post_office</i>
+    <span>Messages</span></button>
+  <button mat-menu-item (click)="logout()"><i
+      class="material-icons mr-1">power_settings_new</i><span>Logout</span></button>
+</mat-menu>

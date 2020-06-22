@@ -1,0 +1,29 @@
+<form>
+  <div class="mb-4">
+    <mat-form-field class="w-100">
+      <input matInput type="text" [(ngModel)]="userName" placeholder="Username" [ngModelOptions]="{standalone: true}"
+        required autocomplete="off">
+    </mat-form-field>
+  </div>
+  <div class="mb-4">
+    <mat-form-field class="w-100">
+      <input matInput type="password" [(ngModel)]="password" placeholder="Password"
+        [ngModelOptions]="{standalone: true}" required autocomplete="off">
+    </mat-form-field>
+  </div>
+  <div class="mb-3">
+    <!-- <mat-checkbox>Remember Me</mat-checkbox> -->
+    <span fxFlex></span> <a [routerLink]="['/session/forgot-password']">Forgot Password?</a>
+  </div>
+  <div style="text-align:center">
+    <!-- [routerLink]="['/checkout/payment']" -->
+    <button color="accent" class="button-lg mb-3" mat-raised-button style="background-color: #ed1c24;min-height: 37px;
+    width: 49%;" (click)="loginUser()">Sign In</button>
+  </div>
+
+  <p>Don't have an account? <a [routerLink]="['/session/signup']"><b>Click here to create one</b></a></p>
+</form>
+<embryo-HeaderUserProfileDropdown style="visibility: hidden;" [alluserdetail]="alluserdetail1">
+</embryo-HeaderUserProfileDropdown>
+<embryo-HeaderCart style="visibility: hidden;">
+</embryo-HeaderCart>

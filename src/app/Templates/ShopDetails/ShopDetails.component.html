@@ -1,0 +1,350 @@
+<div class="product-detail-page  bg-white" *ngIf="detailData">
+  <div class="container">
+    <div fxLayout='row wrap' fxLayoutAlign="center center" class="col-gap">
+      <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md=90 fxFlex.lg=100 fxFlex.xl="90">
+        <div fxLayout='row wrap' class="col-gap position-relative">
+          <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md=50 fxFlex.lg="50" fxFlex.xl="50">
+            <div fxLayout='row wrap'>
+              <div fxFlex.xs="15" fxFlex.sm="15" fxFlex.md="15" fxFlex.lg="15" fxFlex.xl="15">
+                <div class="product-detail-image-gallery ">
+                  <mat-grid-list cols="1" rowHeight="1:1" gutterSize="20px">
+                    <mat-grid-tile *ngFor="let img of images; let i=index">
+                      <div class="product-image-gallery-item">
+                        <a id="{{i}}_img" class="p-link" [ngClass]="{ 'border-active': i === 0 }"
+                          href="javascript:void(0)" (mouseenter)="getImagePath(img.fileName, i)">
+                          <img [src]="img.fileName" alt="">
+                        </a>
+                      </div>
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                </div>
+              </div>
+              <div fxFlex.xs="85" fxFlex.sm="85" fxFlex.md="85" fxFlex.lg="85" fxFlex.xl="85" class="relative"
+                *ngIf="mainImgPath" style="padding-left: 5px;">
+                <pinch-zoom [limit-zoom]="4">
+                  <img [src]="mainImgPath" style="width:100%; height:480px;"
+                    resultStyle="background-repeat: no-repeat; z-index: 2; position:absolute;
+                                   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                                    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); top: 0;left: 100%;" lensStyle="width:100px; height:100px"
+                    containerStyle="">
+                </pinch-zoom>
+              </div>
+
+            </div>
+            <div style="text-align: center;">
+              <div class="mb-4" style="padding-top: 8px;">
+                <a href="javascript:void(0)" class="text-underline" (click)="addToWishlist(detailData[0])"> Add To
+                  Wishlist</a>
+              </div>
+              <div class="mb-5 buttons">
+                <button mat-raised-button color="accent" class="button-lg mr-3 cart" (click)="addToCart(detailData[0])">
+                  Add To Cart</button>
+                <button class="button-lg buyNow" mat-raised-button (click)="buyNow(detailData[0])">Buy Now</button>
+              </div>
+            </div>
+
+          </div>
+
+
+
+          <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md=50 fxFlex.lg="50" fxFlex.xl="50">
+            <div class="product-detail-content scrolldata">
+              <a href="javascript:void(0)" [routerLink]="['/']">Back to Shop</a>
+              <h3 style="filter: brightness(1.0);
+              color: #e0272fc4;">{{detailData[0].productName}}</h3>
+              <div fxLayoutAlign="start center" class="mb-3">
+                <div>
+                  <a href="javascript:void(0)" class="text-underline" (click)="reviewPopup(detailData)">ADD A REVIEW</a>
+                </div>
+              </div>
+              <div class="product-detail-price">
+                <h4 *ngIf="detailData[0].specialDiscount==null" class="accent-color" style="filter: brightness(1.0);
+                color: #e0272fc4;">₹ {{detailData[0].sellingPrice}} <del style="color: #878787;font-size: 16px;">₹
+                    {{detailData[0].mrp}}</del> </h4>
+                <h4 *ngIf="detailData[0].specialDiscount>0" class="accent-color" style="filter: brightness(1.0);
+                    color: #e0272fc4;">₹ {{((detailData[0].sellingPrice)-(detailData[0].specialDiscount))}} <del
+                    style="color: #878787;font-size: 16px;">₹
+                    {{detailData[0].sellingPrice}}</del> </h4>
+              </div>
+              <ul class="no-style mb-4">
+                <li>
+                  <span class="font-medium"> Availablity </span>:
+                  <span *ngIf="detailData?.availablity">In Stocks</span>
+                  <span *ngIf="!(detailData?.availablity)">Out Of Stocks</span>
+                </li>
+                <li>
+                  <span class="font-medium">Product Code </span>: Stayfit-123
+                </li>
+                <li>
+                  <!-- <ng-container>
+                    Motorised-Treadmill
+                  </ng-container> -->
+                </li>
+              </ul>
+              <div class="short-des">
+                <p>
+                  {{detailData[0].productDescription}} </p>
+              </div>
+
+              <div fxLayoutGap="30px" class="mb-3 select-group">
+                <!-- <ng-container *ngIf="type == 'men' || type == 'women'">
+                  <mat-form-field>
+                    <mat-select class="product-detail-select" placeholder="Color">
+                      <ng-container *ngFor="let color of colorsArray">
+                        <mat-option class="product-detail-select" value="{{color}}">{{color}}</mat-option>
+                      </ng-container>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-select placeholder="Size">
+                      <ng-container *ngFor="let size of sizeArray">
+                        <mat-option value="{{size}}">{{size}}</mat-option>
+                      </ng-container>
+                    </mat-select>
+                  </mat-form-field>
+                </ng-container> -->
+                <!-- <mat-form-field>
+                  <mat-select placeholder="Quantity" (selectionChange)="calculatePrice(detailData, $event.value)">
+                    <ng-container *ngFor="let quantity of quantityArray">
+                      <mat-option value="{{quantity}}">{{quantity}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field> -->
+              </div>
+
+              <mat-card style="margin-top: 2px;">
+                <div fxLayoutAlign="start center">
+                  <div class="mr-3"> <span>Share-Now</span></div>
+                  <div class="detail-product-share">
+
+                    <button mat-mini-fab class="mr-1" style="background: #3d5b99;
+color: white;">
+
+                      <a href="https://www.facebook.com/sharer.php?u={{window1}}" target="_blank"><i
+                          class="fab fa-facebook-f"></i></a>
+
+                    </button>
+                    <button mat-mini-fab class="mr-1" style="background: #1da1f2;
+color: white;">
+                      <a href="https://twitter.com/intent/tweet?url={{window1}}" target="_blank"><i
+                          class="fab fa-twitter"></i></a>
+
+                    </button>
+
+                    <!-- <button mat-mini-fab  class="mr-1" style="background: #ff7745;
+color: white;">
+  <a href="https://www.instagram.com/stayfit_health_and_fitness/" target="_blank"><i class="fab fa-instagram"></i></a>
+
+</button>  -->
+                    <!-- <share-buttons theme="material-dark" show="3" ></share-buttons> -->
+                  </div>
+                </div>
+              </mat-card>
+              <mat-card style="margin-top:2px;">
+                <mat-tab-group>
+                  <mat-tab label="Specifications">
+                    <mat-card class="scrolldata1">
+                      <span class="font-medium" style="font-size: 24px;color: #e0272fc4;">Specifications</span>:
+                      <div class="specification" *ngFor="let feature of specification">
+                        <h6> {{feature.specificationName}} </h6>
+                        <table class="table">
+                          <tbody class="service" *ngFor="let feature1 of feature.contentIds">
+                            <tr class="service">
+                              <td style="font-size: 14px; color: #878787;"> {{feature1.contentName}} </td>
+                              <td style="color: black;"> {{feature1.contentWrtToProduct}} </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </mat-card>
+
+                  </mat-tab>
+                  <mat-tab label="Ratings & Reviews">
+                    <mat-card style="margin-top: 4px;" class="scrolldata1">
+
+                      <span class="font-medium" style="font-size: 24px;color: #e0272fc4;">Ratings & Review</span>:
+                      <!-- <div class="specification">
+                        <mat-card><span>
+                            <bar-rating [rate]="4" [max]="4" [theme]="'stars'" [readOnly]="true"></bar-rating>339
+                            Ratings
+                            &
+                            100 Reviews
+                          </span></mat-card>
+                      </div> -->
+                      <mat-card class="ratiings">
+                        <!-- <p>
+                          <bar-rating [rate]="5" [max]="5" [readOnly]="true"></bar-rating>5151 Reviews
+                        </p>
+
+                        <p>
+                          <bar-rating [rate]="4" [max]="4" [readOnly]="true"></bar-rating>277 Reviews
+                        </p>
+                        <p>
+                          <bar-rating [rate]="3" [max]="3" [readOnly]="true"></bar-rating>278 Reviews
+                        </p>
+                        <p>
+                          <bar-rating [rate]="2" [max]="2" [readOnly]="true"></bar-rating>25 Reviews
+                        </p>
+                        <p>
+                          <bar-rating [rate]="1" [max]="1" [readOnly]="true"></bar-rating><span>10 Reviews </span>
+                        </p> -->
+
+                        <span class="heading"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <p>4.1 average based on 254 reviews.</p>
+                        <div class="row">
+                          <div class="side">
+                            <div>5 star</div>
+                          </div>
+                          <div class="middle">
+                            <div class="bar-container">
+                              <div class="bar-5"></div>
+                            </div>
+                          </div>
+                          <div class="side right">
+                            <div>150</div>
+                          </div>
+                          <div class="side">
+                            <div>4 star</div>
+                          </div>
+                          <div class="middle">
+                            <div class="bar-container">
+                              <div class="bar-4"></div>
+                            </div>
+                          </div>
+                          <div class="side right">
+                            <div>63</div>
+                          </div>
+                          <div class="side">
+                            <div>3 star</div>
+                          </div>
+                          <div class="middle">
+                            <div class="bar-container">
+                              <div class="bar-3"></div>
+                            </div>
+                          </div>
+                          <div class="side right">
+                            <div>15</div>
+                          </div>
+                          <div class="side">
+                            <div>2 star</div>
+                          </div>
+                          <div class="middle">
+                            <div class="bar-container">
+                              <div class="bar-2"></div>
+                            </div>
+                          </div>
+                          <div class="side right">
+                            <div>6</div>
+                          </div>
+                          <div class="side">
+                            <div>1 star</div>
+                          </div>
+                          <div class="middle">
+                            <div class="bar-container">
+                              <div class="bar-1"></div>
+                            </div>
+                          </div>
+                          <div class="side right">
+                            <div>20</div>
+                          </div>
+                        </div>
+                      </mat-card>
+                      <mat-card class="example-card">
+                        <mat-card-header>
+                          <div mat-card-avatar class="example-header-image"></div>
+                          <mat-card-title>Stayfit-India</mat-card-title>
+                          <mat-card-subtitle>Buyed 2 Months-ago</mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image [src]="mainImgPath" alt="Photo of a Shiba Inu"
+                          style="height: 100px; width: 145px;">
+                        <mat-card-content>
+                          <p>
+                            Good Product Really I Love it.....Amazinggg.
+                          </p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                          <button mat-button>LIKE</button>
+                          <button mat-button>SHARE</button>
+                        </mat-card-actions>
+                      </mat-card>
+                    </mat-card>
+                  </mat-tab>
+
+                </mat-tab-group>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-card-wrapper section-gap" style="margin-top:-68px;">
+      <div class="container">
+        <mat-toolbar color="primary" style="width: 1300px;
+          opacity: 0.8;
+          background-color: #003367;
+          margin-left: -100px;" class="section-title-toolbar">
+          <mat-toolbar-row>
+            <div fxLayoutAlign="space-between" class="w-100 toolbar-title" style="color:#fff">
+              <div>
+                <h3 style="color:#fff;font-size: x-large;">Similar Products</h3>
+              </div>
+
+            </div>
+          </mat-toolbar-row>
+        </mat-toolbar>
+      </div>
+
+      <div class="shop-card-gap px-4" style="margin-top: 0px;">
+        <div *ngIf="productsSubcategories.length==0">
+          <h4 style="color:black;
+          text-align: center;">No Items Found</h4>
+        </div>
+        <div class="container">
+          <!-- margin-left: -125px;
+          width: 1300px; -->
+
+          <ng-container *ngIf="(mobWidth >= mobScreenSize)">
+
+            <ngx-slick-carousel style="margin-left: -125px;
+            width: 1300px;" *ngIf="!embryoService.isDirectionRtl" class="carousel" [config]="slideConfig">
+              <div ngxSlickItem *ngFor="let product of productsSubcategories; let i=index">
+                <embryo-viewsimilarproducts [product]="product" (addToCart)="addToCart($event)"
+                  [currency]="embryoService.currency" (addToWishlist)="addToWishlist($event)" [index]="i">
+                </embryo-viewsimilarproducts>
+              </div>
+
+            </ngx-slick-carousel>
+
+          </ng-container>
+          <ng-container *ngIf="(mobWidth < mobScreenSize)">
+
+            <ngx-slick-carousel *ngIf="!embryoService.isDirectionRtl" class="carousel" [config]="slideConfig">
+              <div ngxSlickItem *ngFor="let product of productsSubcategories; let i=index">
+                <embryo-viewsimilarproducts [product]="product" (addToCart)="addToCart($event)"
+                  [currency]="embryoService.currency" (addToWishlist)="addToWishlist($event)" [index]="i">
+                </embryo-viewsimilarproducts>
+              </div>
+
+            </ngx-slick-carousel>
+
+          </ng-container>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+      <button class="backToTop" (click)="scrollToTop()">
+        <i class="fa fa-chevron-up" style="color: white; font-size: 20px;"></i>
+      </button>
+    </div>
+
+  </div>
+</div>

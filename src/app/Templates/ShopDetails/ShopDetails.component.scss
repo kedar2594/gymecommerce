@@ -1,0 +1,141 @@
+.totalWidth{
+  flex: 1 1 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.select-group .mat-form-field {
+	width: 110px;
+}
+
+.cart{
+	border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    width: 30%;
+    border: none;
+    background: #ff9f00 !important;
+    color: #fff !important;
+}
+.buyNow{
+	  background: #fb641b;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    border: none;
+    color: #fff;
+}
+//  .scrolldata{
+//  	height: 650px;
+//  	overflow-y: scroll;
+// }
+// ::-webkit-scrollbar { width: 0 !important }
+
+.scrolldata1{
+  height: 300px;
+ 	overflow-y: scroll;
+}
+::-webkit-scrollbar { width: 0 !important }
+
+.rating{
+    border-top: hidden;
+}
+.ratiings{
+overflow-x: scroll;
+margin-top: 2px;
+}
+::-webkit-scrollbar { width: 0 !important }
+
+.example-card {
+    max-width: 400px;
+    margin-top: 2px;
+  }
+
+  .example-header-image {
+    background-image: url('/assets/images/gym-accessories.jpg');
+    background-size: cover;
+
+  }
+  .heading {
+    font-size: 25px;
+    margin-right: 25px;
+  }
+
+  .fa {
+    font-size: 25px;
+  }
+
+  .checked {
+    color: orange;
+  }
+
+  /* Three column layout */
+  .side {
+    float: left;
+    width: 15%;
+    margin-top:10px;
+  }
+
+  .middle {
+    margin-top:10px;
+    float: left;
+    width: 70%;
+  }
+
+  /* Place text to the right */
+  .right {
+    text-align: right;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* The bar container */
+  .bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+  }
+
+  /* Individual bars */
+  .bar-5 {width: 80%; height: 18px; background-color: #4CAF50;}
+  .bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+  .bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+  .bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+  .bar-1 {width: 15%; height: 18px; background-color: #f44336;}
+
+  /* Responsive layout - make the columns stack on top of each other instead of next to each other */
+  @media (max-width: 400px) {
+    .side, .middle {
+      width: 100%;
+    }
+    .right {
+      display: none;
+    }
+  }
+
+  .scroll-to-top {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+}
+
+.show-scrollTop {
+    opacity: 1;
+    transition: all .2s ease-in-out;
+}
+
+.backToTop {
+  border-radius: 25px;
+  border: 0;
+  height: 44px;
+  width: 45px;
+  background-color: #ed1c24;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+

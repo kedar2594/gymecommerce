@@ -1,0 +1,41 @@
+.button-cart {
+  background: #ed1c24;
+  border-radius: 20px;
+  line-height: 2.6rem;
+  min-width: 0;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  color: white;
+
+}
+.button-heart {
+  background: #ed1c24;
+  border-radius: 20px;
+  line-height: 2.6rem;
+  min-width: 0;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  color: white;
+
+}
+.card-shadow{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.button-cart :hover,
+.button-cart :focus {
+  // box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.5em);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.button-heart:hover,
+.button-heart:focus {
+  // box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  transform: translateY(-0.5em);
+}
+.categories{
+  font-family: sans-serif;
+  padding-bottom: 5%;
+}

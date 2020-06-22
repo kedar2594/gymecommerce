@@ -1,0 +1,35 @@
+<!-- <mat-card style="filter:  drop-shadow(1px 2px 3px black);"> -->
+<h4>Profile Information</h4>
+<div class="pt-3">
+  <div class="proflie-field mb-3">
+    <label>First Name:</label>
+    <span>{{details.customerFirstName}}</span>
+  </div>
+  <div class="proflie-field mb-3">
+    <label>Last Name:</label>
+    <span>{{details.customerLastName}}</span>
+  </div>
+  <div class="proflie-field mb-3">
+    <label>Gender:</label>
+    <span>{{details.sex}}</span>
+  </div>
+  <div class="proflie-field mb-3">
+    <label>Age:</label>
+    <span>{{details.age}}</span>
+  </div>
+  <div class="proflie-field mb-3">
+    <label>Mobile Number:</label>
+    <span>{{details.phoneNumber}}</span>
+  </div>
+  <!-- <div class="proflie-field mb-3">
+      <label>location:</label>
+      <span>----</span>
+    </div> -->
+  <div class="proflie-field mb-3">
+    <label>E-mail id:</label>
+    <span>{{details.emailId}}</span>
+  </div>
+
+  <button mat-raised-button color="accent" [routerLink]="['edit']" [queryParams]="{type:'info'}">Edit</button>
+</div>
+<!-- </mat-card> -->

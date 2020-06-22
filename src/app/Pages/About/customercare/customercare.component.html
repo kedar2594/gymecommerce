@@ -1,0 +1,193 @@
+<embryo-PageTitle heading="Customer Care"></embryo-PageTitle>
+<div class="inner-container section-gap bg-white">
+  <div class="container">
+    <div class="tnc-page">
+      <mat-card class="mb-5" style="box-shadow: 0 0 30px 0 rgba(0,0,0,.1);">
+        <h4>STAYFIT offers various Support packages to assist the customer with the labor and parts serviceable once the
+          warranty period is over</h4>
+        <p>
+          We know how critical your equipment’s uptime is for you and your exercisers. Should a service concern arise,
+          our Service Agreement programs deliver a fast, skilled response by our team of certified technicians so your
+          equipment is back to full speed quickly. The Gold and Silver plans also include complimentary, regular
+          Preventative Maintenance service to help ensure your equipment is performing in top condition.
+        </p>
+        <p>
+          By taking one of the STAYFIT Support Packages we ensure that your equipment is always our top priority and you
+          will not be burdened by any extra charges.
+
+
+        </p>
+        <p>
+          We care for your fitness regime and would like to provide an effective service uptime wherein when a service
+          concern arises our Customer Support delivers a quick skilled response by our STAYFIT certified technicians so
+          your equipment is fully functional. Our advanced Program allows your complimentary Preventive Maintenance to
+          help ensure your equipment is functioning smoothly.
+
+
+        </p>
+
+        <h4>Service Agreement Packages</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>PACKAGE</th>
+              <th>Preventive Maintenance Charge</th>
+              <th>Service Charge</th>
+              <th>Spare Part Charges</th>
+              <th>Response Time</th>
+              <th>Preventative Maintenances Visit (1 Year)</th>
+              <th>Parts Shipment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Platinum</td>
+              <td>20% of the product Value</td>
+              <td>Included</td>
+              <td>Included</td>
+              <td>8 Working Hr</td>
+              <td>4</td>
+              <td>2 Days</td>
+            </tr>
+            <tr>
+              <td>Gold</td>
+              <td>15% of the product Value</td>
+              <td>Included</td>
+              <td>Included</td>
+              <td>16 Working Hr</td>
+              <td>3</td>
+              <td>3 to 7 Days</td>
+            </tr>
+            <tr>
+              <td>Sliver</td>
+              <td>10% of the product Value</td>
+              <td>Included</td>
+              <td>Included</td>
+              <td>16 Working Hr</td>
+              <td>2</td>
+              <td>As per Availability</td>
+            </tr>
+            <tr>
+              <td>Pay as You Go
+
+              </td>
+              <td>NA</td>
+              <td>Rs. 2000</td>
+              <td>10% Discount</td>
+              <td>16 Working Hr</td>
+              <td>2</td>
+              <td>As per Availability</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Annual Maintenenance</h4>
+        <p>
+          Stayfit Annual Maintenance program is a great way to make sure your equipment is performing in peak condition
+          for your exercisers.
+        </p>
+
+        <h4>Benefits of Annual Maintenance</h4>
+        <ul>
+          <li>Increases uptime of your equipment</li>
+          <li>Extends the life of your equipment</li>
+          <li>Reduces risk</li>
+          <li>Provides members with an optimum experience</li>
+          <li>Reduces club staffing requirement and/or 3rd party servicer expense
+          </li>
+          <li>Company trained service technician who will service your equipment
+          </li>
+        </ul>
+
+        <h4>What do we do in Annual Maintenance Contract</h4>
+        <h5>Treadmills</h5>
+        <ul>
+          <li>Check the product, including the safety key, for safe operation. Secure any loose screws.</li>
+          <li>Inspect the power cord for damage. Replace if necessary.
+          </li>
+          <li>Make sure handles, pedestals, and other parts are secure, and that screws are tight.
+          </li>
+          <li>Check walk belt tension and alignment. Adjust if necessary.
+          </li>
+          <li>Inspect the walk belt and deck for wear.
+          </li>
+          <li>For DC motorized treadmills, remove motor brushes. Remove loose carbon out of the motor brush area.
+          </li>
+          <li>Turn off unit power. To allow capacitors to discharge, wait five minutes before disconnecting power cord.
+            Remove the motor cover. Vacuum the area around the drive motor and board.
+          </li>
+          <li>Check drive belt for wear and tear. Replace it if there are cracks or damage.
+          </li>
+          <li>Clean and lubricate walk deck bushings.
+          </li>
+        </ul>
+        <h5>Bikes</h5>
+        <ul>
+          <li>Clean covers</li>
+          <li>Clean frame</li>
+          <li>Vacuum interior
+          </li>
+          <li>Clean friction belt
+          </li>
+          <li>Grease pivots
+          </li>
+          <li>Check springs
+          </li>
+          <li>Check cables
+          </li>
+          <li>Lubricate chains
+          </li>
+          <li>Check shocks
+          </li>
+          <li>Check electrical connections
+          </li>
+          <li>Check handrails
+          </li>
+        </ul>
+        <div>
+          <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="First Name" formControlName="first_name">
+            </mat-form-field>
+            <mat-error
+              *ngIf="contactForm.controls['first_name'].hasError('required') && contactForm.controls['first_name'].touched">
+              This field should not be empty.</mat-error>
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Registered Mobile Number" formControlName="mobile_number">
+            </mat-form-field>
+            <mat-error
+              *ngIf="contactForm.controls['mobile_number'].hasError('required') && contactForm.controls['mobile_number'].touched">
+              This field should not be empty.</mat-error>
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Product" formControlName="product">
+            </mat-form-field>
+            <mat-error
+              *ngIf="contactForm.controls['product'].hasError('required') && contactForm.controls['product'].touched">
+              This
+              field should not be empty.</mat-error>
+
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Date of Purchase" formControlName="date">
+            </mat-form-field>
+            <mat-error
+              *ngIf="contactForm.controls['date'].hasError('required') && contactForm.controls['date'].touched">
+              This field should not be empty.</mat-error>
+            <mat-form-field class="w-100">
+              <textarea matInput placeholder="Nature of problem" formControlName="message"></textarea>
+            </mat-form-field>
+            <mat-error
+              *ngIf="contactForm.controls['message'].hasError('required') && contactForm.controls['message'].touched">
+              This field should not be empty.</mat-error>
+            <button mat-raised-button color="accent" class="button-lg" type="submit">Send Messsage</button>
+          </form>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+</div>
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+  <button class="backToTop" (click)="scrollToTop()">
+    <i class="fa fa-chevron-up" style="color: white; font-size: 20px;"></i>
+  </button>
+</div>

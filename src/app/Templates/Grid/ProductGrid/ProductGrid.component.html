@@ -1,0 +1,76 @@
+<div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap" *ngIf="products && products.length > 0"
+  style="margin-right: -100px;">
+  <div fxFlex.xs="100" fxFlex.sm="30" fxFlex.md="30" fxFlex.lg="{{lg}}" fxFlex.xl="{{xl}}"
+    *ngFor="let product of products | paginate: { itemsPerPage: number, currentPage: p }; let i=index; trackBy: trackByObjectID">
+    <mat-card class="example-card" *ngIf="gridLength && (i<gridLength)" style="max-height: 325px;">
+      <a class="p-link" [routerLink]="['/products', product?.type, product?.id]">
+        <img width="626" height="800" mat-card-image [src]="assets/images/tr1.png" alt="Photo of a Shiba Inu">
+      </a>
+      <div class="wishlist-icon {{i}}-wishlist">
+        <a (click)="productAddToWishlist(product, i+'-wishlist')"><i class="material-icons"> favorite </i></a>
+      </div>
+      <mat-card-content class="product-content relative">
+        <h6><a [routerLink]="['/products', product?.type, product?.id]" class="title-link">{{product?.name}}</a> </h6>
+        <div>
+          <div fxFlex fxLayoutAlign="space-between">
+            <h6 class="accent-color">₹{{product?.price }}</h6>
+            <div class="rating-star">
+              <embryo-Rating [rate]="product.rating"></embryo-Rating>
+            </div>
+          </div>
+        </div>
+        <div class="m-icon" *ngIf="checkCartAlready(product)">
+          <embryo-AddToCardButton [product]="product" (addToCart)="addToCartProduct($event)"></embryo-AddToCardButton>
+        </div>
+        <div class="m-icon" *ngIf="!checkCartAlready(product)">
+          <button mat-fab [routerLink]="['/products', product?.type, product?.id]"><i
+              class="material-icons">remove_red_eye</i> </button>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+    <!-- Multiple show products grid -->
+    <mat-card class="example-card" *ngIf="!gridLength" style="max-height: 19.6rem;">
+      <a class="p-link" *ngIf="product?.id" [routerLink]="['/products', product?.type, product?.id]">
+        <img width="626" height="800" style="height: 193px;" mat-card-image [src]="product?.productPic" alt="Photo">
+      </a>
+      <a class="p-link" *ngIf="product?.productId" [routerLink]="['/products/viewproduct',product?.productId]">
+        <img width="626" height="800" style="height: 193px;" mat-card-image [src]="product?.productPic" [ngClass]="{ transparent: !loaded }"
+          (load)="onLoad()" alt="Photo">
+      </a>
+      <div class="wishlist-icon {{i}}-wishlist">
+        <a (click)="productAddToWishlist(product, i+'-wishlist')"><i class="material-icons"> favorite </i></a>
+      </div>
+      <mat-card-content class="product-content relative">
+        <!-- <h6><a *ngIf="product?.productId" [routerLink]="['/products', product?.type, product?.productId]" class="title-link">{{product.productName}}</a> </h6> -->
+        <h6><a *ngIf="product?.productId" [routerLink]="['/products/viewproduct',product?.productId]"
+            class="title-link">{{product.productName}}</a> </h6>
+        <div>
+          <div fxFlex fxLayoutAlign="space-between">
+            <div class="product-detail-price">
+              <h4 class="accent-color" style="filter: brightness(1.0);font-size: 19px;
+                    color: #e0272fc4;">₹ {{product.sellingPrice}} <del style="color: #878787;font-size: 16px;">₹
+                  {{product.mrp}}</del></h4>
+
+            </div>
+
+            <div class="rating-star">
+              <embryo-Rating [rate]="product.rating"></embryo-Rating>
+            </div>
+          </div>
+        </div>
+        <div class="m-icon" *ngIf="checkCartAlready(product)">
+          <embryo-AddToCardButton [product]="product" (addToCart)="addToCartProduct($event)"></embryo-AddToCardButton>
+        </div>
+        <div class="m-icon" *ngIf="!checkCartAlready(product)">
+          <button mat-fab *ngIf="product?.productId" [routerLink]="['/products/viewproduct',product?.productId]"><i
+              class="material-icons">remove_red_eye</i> </button>
+          <button mat-fab *ngIf="!product?.productId" [routerLink]="['/products/viewproduct',product?.productId]"><i
+              class="material-icons">remove_red_eye</i> </button>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>

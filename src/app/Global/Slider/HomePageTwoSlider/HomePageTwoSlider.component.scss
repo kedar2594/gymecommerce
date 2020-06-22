@@ -1,0 +1,64 @@
+/* Default to hide the video on all devices */
+#video{display:none}
+
+/* Default to display the image on all devices */
+#videosubstitute{display:block;width:auto;height:100%;}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+#fullScreenDiv{
+    width:100%;
+    min-height: 100%; 
+   /* Set the height to match that of the viewport. */
+    height: 80vh;
+    width: auto;
+    padding:0!important;
+    margin: 0!important;
+    background-color: gray;
+    position: relative;
+}
+#video{    
+    width: 100vw; 
+    height: auto;
+    object-fit: cover;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  #video{
+    height: 100%;
+    top: 0%;
+  }
+  #videosubstitute{
+    display:block;
+    width: 100%;
+    height: auto;}
+}
+
+@media (max-aspect-ratio: 16/9) {
+  #video {
+    width: 150%;
+    left: -100%;
+  }
+  #videosubstitute{display:block;width:auto;height:100%;}
+}
+/*if there is 992  pixels or more, then display the video but hide the image*/
+@media only screen and (min-width : 992px) {
+#video{display:block;}
+#videosubstitute{display:none}
+}   
+
+/* The container for our text and stuff */
+#messageBox{
+    position: absolute;  top:0px;  left: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height:100%;
+    color:white;
+}

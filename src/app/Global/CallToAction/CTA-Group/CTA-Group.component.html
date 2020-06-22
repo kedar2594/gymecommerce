@@ -1,0 +1,134 @@
+<!-- <div fxLayout="row wrap" class="col-gap" style="justify-content: center;margin-bottom:-27px;">
+  <ng-container  >
+
+    <mat-card class="cardxyz" >
+
+      <mat-card-content class="pt-3 contentxyz">
+        <a href="javascript:void(0)">
+          <img src="/assets/images/tr1.png" alt="Photo" style="margin-top: -46px;">
+        </a>
+
+        <h5 style="text-align:center"><a href="javascript:void(0)"><b>BIKES</b></a></h5>
+
+      </mat-card-content>
+
+    </mat-card>
+    <mat-card class="cardxyz">
+
+      <mat-card-content class="pt-3 contentxyz">
+        <a href="javascript:void(0)">
+          <img src="/assets/images/Tre.png" alt="Photo" style="margin-top: -46px;">
+        </a>
+
+        <h5 style="text-align:center"><a href="javascript:void(0)"><b>TREADMILLS</b></a></h5>
+
+      </mat-card-content>
+
+    </mat-card>
+    <mat-card class="cardxyz">
+
+      <mat-card-content class="pt-3 contentxyz">
+        <a href="javascript:void(0)">
+          <img src="/assets/images/tr2.png" alt="Photo" style="margin-top: -46px;">
+        </a>
+
+        <h5 style="text-align:center"><a href="javascript:void(0)"><b>ELLIPTICALS</b></a></h5>
+
+      </mat-card-content>
+
+    </mat-card>
+    <mat-card class="cardxyz">
+
+      <mat-card-content class="pt-3 contentxyz">
+        <a href="javascript:void(0)">
+          <img src="/assets/images/tr3.png" alt="Photo" style="margin-top: -46px;">
+        </a>
+
+        <h5 style="text-align:center"><a href="javascript:void(0)"><b>STRENGTH</b></a></h5>
+
+      </mat-card-content>
+
+    </mat-card>
+
+  </ng-container>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-gap pb-0 pt-5 image-group" style="margin-top: -30px;">
+  <div class="container" style="padding-left: 0px;margin-right:36px;width:1250px;">
+
+    <div fxLayout="row wrap" class="col-gap">
+
+      <ng-container *ngFor="let data of quickAccesslist">
+
+        <div class="badge {{data.color}}" (click)="navigateToProducts(data)" style="cursor:pointer;margin-left:90px;">
+          <div class="circle"><img src="{{data.iconPic.fileName}}"
+              style="max-width:62%;margin-top:17px;margin-left: 15px;">
+          </div>
+          <div class="ribbon" style="text-align:center">{{data.quickLinkName}}</div>
+        </div>
+        <!-- <div class="badge orange"  [routerLink]="['/products']">
+          <div class="circle"> <img src="assets/images/gym/trainer.png" style="max-width:62%;margin-top:7px;"></div>
+          <div class="ribbon">E.Trainers</div>
+        </div> -->
+        <!-- <div class="badge pink"  [routerLink]="['/products']">
+          <div class="circle"><img src="assets/images/gym/gymbikesicon.png" style="max-width:62%;margin-top:11px;"></div>
+          <div class="ribbon">Bikes</div>
+        </div>
+        <div class="badge red"  [routerLink]="['/products']">
+          <div class="circle"> <img src="assets/images/icon5.jpg" style="max-width:62%;margin-top:11px;">
+          </div>
+          <div class="ribbon">Strength</div>
+        </div>
+        <div class="badge purple"  [routerLink]="['/products']">
+          <div class="circle"><img src="assets/images/gym/generalicon.png" style="max-width:62%;margin-top:11px;"></div>
+          <div class="ribbon">General</div>
+        </div> -->
+      </ng-container>
+
+      <!-- <div class="badge teal"  [routerLink]="['/products']">
+          <div class="circle"> <img src="assets/images/gym/crosstrainingicon.png" style="max-width:62%;margin-top:11px;">
+          </div>
+          <div class="ribbon">Cross Training</div>
+        </div>
+        <div class="badge blue"  [routerLink]="['/products']">
+          <div class="circle"> <img src="assets/images/gym/pillets.png" style="max-width:62%;margin-top:11px;"></div>
+          <div class="ribbon">Pilates</div>
+        </div>
+        <div class="badge orange"  [routerLink]="['/products']">
+          <div class="circle"> <img src="assets/images/gym/dumbellesicon.png" style="max-width:62%;margin-top:11px;">
+          </div>
+          <div class="ribbon">Accessories</div>
+        </div> -->
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+<!-- <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="25" fxFlex.xl="33" *ngFor="let card of callToActionArray" style="margin-bottom:0px;">
+        <a [routerLink]="[card.route]"> <img [src]="card.img_path" alt=""></a>
+      </div> -->
+<!-- <div class="center">  <div class="hexagon"></div></div>  -->
