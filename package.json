@@ -62,7 +62,7 @@
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.10.6",
+    "@angular-devkit/build-angular": "^15.0.4",
     "@angular/cli": "^7.3.9",
     "@angular/compiler-cli": "^7.2.16",
     "@angular/language-service": "^7.2.16",
@@ -71,7 +71,7 @@
     "@types/jquery": "^3.3.33",
     "@types/node": "^10.17.17",
     "codelyzer": "^4.5.0",
-    "copy-webpack-plugin": "^4.6.0",
+    "copy-webpack-plugin": "^11.0.0",
     "express": "^4.17.1",
     "jasmine-core": "^3.5.0",
     "jasmine-spec-reporter": "^4.2.1",
@@ -82,11 +82,11 @@
     "karma-jasmine-html-reporter": "^1.5.2",
     "protractor": "^5.4.3",
     "rxjs-tslint": "^0.1.7",
-    "ts-loader": "^5.4.5",
+    "ts-loader": "^9.4.2",
     "ts-node": "^5.0.1",
     "tslint": "^5.20.1",
     "typescript": "3.1.1",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^5.0.1",
     "ws": "^6.2.1",
     "xmlhttprequest": "^1.8.0"
   }
